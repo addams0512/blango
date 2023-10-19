@@ -7,6 +7,7 @@ class Tag(models.Model):
   def __str__(self):
     return self.value
 
+
 class Post(models.Model):
   author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
   created_by = models.DateTimeField(auto_now_add=True)
