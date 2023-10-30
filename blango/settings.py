@@ -68,19 +68,19 @@ class Dev(Configuration):
                 "stream": "ext://sys.stdout", 
                 "formatter": "verbose",
             },
-            "mail_admins": {
-                "level": "ERROR",
-                "class": "django.utils.log.AdminEmailHandler",
-                "filters": ["require_debug_false"],
-            },
+            # "mail_admins": {
+            #     "level": "ERROR",
+            #     "class": "django.utils.log.AdminEmailHandler",
+            #     "filters": ["require_debug_false"],
+            # },
         },
-        "loggers": {
-            "django.request": {
-                "handlers": ["mail_admins"],
-                "level": "ERROR",
-                "propagate": True,
-            },
-        },
+        # "loggers": {
+        #     "django.request": {
+        #         "handlers": ["mail_admins"],
+        #         "level": "ERROR",
+        #         "propagate": True,
+        #     },
+        # },
         "root": {
             "handlers": ["console"],
             "level": "DEBUG",

@@ -15,7 +15,9 @@
 {% include 'blog/post-comments.html' %}
 {% row %}
     {% col %}
+      {% cache 3600 recent_posts %}
         {% recent_posts post %}
+      {% endcache %}
     {% endcol %}
 {% endrow %}
 {% endblock content %}
