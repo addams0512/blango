@@ -13,9 +13,9 @@ def index(request):
   # from django.http import HttpResponse
   # logger.debug("Index functions is called!")
   # return HttpResponse(str(request.user).encode("ascii"))
-  posts = Post.objects.filter(published_at__lte=timezone.now())
+  posts = Post.objects.filter(published_at__lte=timezone.now()).select_realted("author")
   logger.debug("Got %d posts", len(posts))
-  logger.info("Created comment on Post %d for user %s", posts.pk, request.user)
+  # logger.info("Created comment on Post %d for user %s", posts.pk, request.user)
   return render(request, 'blog/index.html', {
     'posts': posts,
   })
@@ -44,3 +44,7 @@ def post_detail(request, slug):
       'comment_form': comment_form,
     }
   )
+
+def get_ip(request):
+  from django.http import HttpResponse
+  return HttpResponse(request.META['REMOTE_ADDR'])
