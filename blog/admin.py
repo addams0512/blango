@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Post, Tag, Comment
+from blog.models import Post, Tag, Comment, AuthorProfile
 
 class PostAdmin(admin.ModelAdmin):
   prepopulated_fields = {"slug": ("title",)}
@@ -8,3 +8,4 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag)
 admin.site.register(Comment)
+admin.site.register(AuthorProfile)

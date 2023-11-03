@@ -13,7 +13,7 @@ def index(request):
   # from django.http import HttpResponse
   # logger.debug("Index functions is called!")
   # return HttpResponse(str(request.user).encode("ascii"))
-  posts = Post.objects.filter(published_at__lte=timezone.now()).select_realted("author")
+  posts = Post.objects.filter(published_at__lte=timezone.now()).select_related("author")
   logger.debug("Got %d posts", len(posts))
   # logger.info("Created comment on Post %d for user %s", posts.pk, request.user)
   return render(request, 'blog/index.html', {
