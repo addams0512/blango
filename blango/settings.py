@@ -23,25 +23,25 @@ class Dev(Configuration):
     # Quick-start development settings - unsuitable for production
     # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-    # SECURITY WARNING: keep the secret key used in production secret!
+    # SECURITY WARNING keep the secret key used in production secret!
     SECRET_KEY = "django-insecure-+sn%dpa!086+g+%44z9*^j^q-u4n!j(#wl)x9a%_1op@zz2+1-"
 
-    # SECURITY WARNING: don't run with debug turned on in production!
+    # SECURITY WARNING don't run with debug turned on in production!
     DEBUG = values.BooleanValue(True)
 
-    ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
-
-    X_FRAME_OPTIONS = (
-        "ALLOW-FROM " + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
-    )
-    CSRF_COOKIE_SAMESITE = None
-    CSRF_TRUSTED_ORIGINS = [
-        "https://" + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
-    ]
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SAMESITE = "None"
-    SESSION_COOKIE_SAMESITE = "None"
+    # ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
+    #
+    # X_FRAME_OPTIONS = (
+    #     "ALLOW-FROM " + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
+    # )
+    # CSRF_COOKIE_SAMESITE = None
+    # CSRF_TRUSTED_ORIGINS = [
+    #     "https://" + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
+    # ]
+    # CSRF_COOKIE_SECURE = True
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SAMESITE = "None"
+    # SESSION_COOKIE_SAMESITE = "None"
 
     # Application definition
     AUTH_USER_MODEL = "blango_auth.User"
@@ -52,13 +52,19 @@ class Dev(Configuration):
         "django.contrib.contenttypes",
         "django.contrib.sessions",
         "django.contrib.messages",
+        # TODO: "django.contrib.sites" config the authentication for google
         "django.contrib.staticfiles",
         "blango_auth",
         "blog",
         "crispy_forms",
         "crispy_bootstrap5",
         "debug_toolbar",
+        # TODO: "allauth", "allauth.account", "allauth.socialaccount", "allauth.socialaccount.providers.google"
     ]
+
+    # TODO: SITE_ID = 1,
+    # TODO: ACCOUNT_USER_MODEL_USERNAME_FIELD = None, ACCOUNT_EMAIL_REQUIRED = True
+    # TODO: ACCOUNT_USERNAME_REQUIRED = False, ACCOUNT_AUTHENTICATION_METHOD = "email"
 
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
     ACCOUNT_ACTIVATION_DAYS = 7
