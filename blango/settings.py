@@ -30,7 +30,7 @@ class Dev(Configuration):
     DEBUG = values.BooleanValue(True)
 
     ALLOWED_HOSTS = values.ListValue(["localhost", "0.0.0.0", ".codio.io"])
-    
+
     X_FRAME_OPTIONS = (
         "ALLOW-FROM " + os.environ.get("CODIO_HOSTNAME") + "-8000.codio.io"
     )
